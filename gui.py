@@ -8,21 +8,19 @@ import main
 def paint(event):
     x1, y1 = (event.x - 1), (event.y - 1)
     x2, y2 = (event.x + 1), (event.y + 1)
-    canvas.create_oval(x1, y1, x2, y2, fill="black", width=20)
-    draw.line([x1, y1, x2, y2], fill='black', width=25)
+    canvas.create_oval(x1, y1, x2, y2, fill="black", width=6)
+    draw.line([x1, y1, x2, y2], fill='black', width=6)
 
 
 # Сохранение нарисованного в png
 def save_image():
     FILENAME = 'image.jpg'
     img.save(FILENAME)
-    # text_result = tk.Label(root, text=f'{main.recognize()[0]}', font=("Arial Black", 120), bg="#04819E", fg='#0f3753')
-    # text_result.place(x=CANVAS_WIDTH * 2 + 25, y=CANVAS_HEIGHT // 2)
 
-    text_result = tk.Label(root, text=f'{test.recognize()[0]}', font=("Arial Black", 120), bg="#04819E", fg='#0f3753')
+    text_result = tk.Label(root, text=f'{main.recognize()[0]}', font=("Arial Black", 120), bg="#04819E", fg='#0f3753')
     text_result.place(x=CANVAS_WIDTH * 2 + 25, y=CANVAS_HEIGHT // 2)
 
-    text_percent = tk.Label(root, text=f'{test.recognize()[1]}', font=("Arial", 30), bg="#04819E", fg='#0f3753')
+    text_percent = tk.Label(root, text=f'{main.recognize()[1]}%', font=("Arial", 30), bg="#04819E", fg='#0f3753')
     text_percent.place(x=CANVAS_WIDTH * 2 + 46, y=HEIGHT - 200)
 
 # Очистка холста
