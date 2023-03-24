@@ -68,7 +68,6 @@ def recognize():
     img = gray / 255.0
     img = np.array(img).reshape(-1, 28, 28, 1)
     prediction = model.predict(img)
-    print(prediction)
     percent = prediction[0][np.argmax(prediction)]
     percent = int(percent * 100)
     digit = np.argmax(prediction)
