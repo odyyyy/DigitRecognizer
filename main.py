@@ -5,7 +5,7 @@ import numpy as np
 from keras.models import load_model
 
 # Загрузка обученной модели нейронной сети
-model = load_model('my_model_cnn.keras')
+model = load_model('my_model_complex_cnn.keras')
 
 
 def getBestShift(img):
