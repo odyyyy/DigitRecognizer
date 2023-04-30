@@ -1,6 +1,5 @@
 import tkinter as tk
 from PIL import Image, ImageDraw
-import test
 import main
 
 
@@ -12,11 +11,12 @@ def paint(event):
     draw.line([x1, y1, x2, y2], fill='black', width=15)
 
 
-# Сохранение нарисованного в png
+# Сохранение нарисованной цифры в jpg файл
 def save_image():
     FILENAME = 'image.jpg'
     img.save(FILENAME)
 
+    # Размещения текста о результатах предикта нейронной сети
     text_result = tk.Label(root, text=f'{main.recognize()[0]}', font=("Arial Black", 120), bg="#04819E", fg='#0f3753')
     text_result.place(x=CANVAS_WIDTH * 2 + 25, y=CANVAS_HEIGHT // 2)
 
@@ -39,6 +39,9 @@ HEIGHT = 600
 root.geometry(f"{WIDTH}x{HEIGHT}+0+0")  # установка размера окна приложения с координатами (0,0) в левом верхнем углу
 root.resizable(False, False)
 root.title("Digit recognizer")
+
+# Установка размеров фреймов и их размещение
+
 frame_left = tk.Frame(root, bg="#04819E", width=WIDTH // 2 - 10, height=HEIGHT - 100)
 frame_right = tk.Frame(root, bg="#04819E", width=WIDTH // 2 - 10, height=HEIGHT - 100)
 frame_top = tk.Frame(root, bg="#38B2CE", width=WIDTH, height=70)
@@ -47,8 +50,8 @@ frame_left.pack(side='left', padx=0)
 frame_right.pack(side='right', padx=0)
 frame_top.place(x=0, y=0)
 
-# Установка заднего фона
-root.config(bg="#03677F")  # Установка цвета заднего фона
+# Установка цвета заднего фона
+root.config(bg="#03677F")
 
 # Размер холста и другие константы
 CANVAS_WIDTH = 300

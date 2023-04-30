@@ -4,10 +4,13 @@ import cv2
 import numpy as np
 from keras.models import load_model
 
+# В main происходит обработка полученной картинки и подгон под формат изображения на котором обучалась сеть
+
 # Загрузка обученной модели нейронной сети
-model = load_model('my_model_complex_cnn.keras')
+model = load_model('my_model_cnn.keras')
 
 
+# Вычисление центра масс и направления сдвига
 def getBestShift(img):
     cy, cx = center_of_mass(img)
 
@@ -66,9 +69,9 @@ def recognize():
 
     cv2.imwrite('image_mnist.jpg', gray)
     img = gray / 255.0
-    img = np.array(img).reshape(-1, 28, 28, 1)
+    img = np.array(img).reshape(-1, 28, 28, 1)  # конвертируем в картинку 28 на 28 пикселей
     prediction = model.predict(img)
-    percent = prediction[0][np.argmax(prediction)]
+    percent = prediction[0][np.argmax(prediction)]  # Результаты работы сети
     percent = int(percent * 100)
     digit = np.argmax(prediction)
     print("Predicted digit:", digit)
@@ -77,5 +80,3 @@ def recognize():
 
 
 print(recognize())
-
-
