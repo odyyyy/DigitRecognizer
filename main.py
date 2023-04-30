@@ -44,7 +44,6 @@ def recognize():
     while np.sum(gray[:, -1]) == 0:
         gray = np.delete(gray, -1, 1)
     rows, cols = gray.shape
-
     # изменяем размер, чтобы помещалось в box 20x20 пикселей
     if rows > cols:
         factor = 20.0 / rows
